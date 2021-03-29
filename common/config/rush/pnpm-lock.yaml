@@ -41,6 +41,7 @@ dependencies:
   '@rush-temp/keyvault-keys': file:projects/keyvault-keys.tgz
   '@rush-temp/keyvault-secrets': file:projects/keyvault-secrets.tgz
   '@rush-temp/logger': file:projects/logger.tgz
+  '@rush-temp/media-analytics-edge': file:projects/media-analytics-edge.tgz
   '@rush-temp/mixedreality-authentication': file:projects/mixedreality-authentication.tgz
   '@rush-temp/mock-hub': file:projects/mock-hub.tgz
   '@rush-temp/monitor-opentelemetry-exporter': file:projects/monitor-opentelemetry-exporter.tgz
@@ -338,6 +339,20 @@ packages:
       debug: '*'
     resolution:
       integrity: sha512-2AyQ1IKmLGKW7DU3/x3TsTBzZLcbC9YRI+yuDPuXAQrv3zar340K9wsxU413kHFIDjkWNCo9T0w5VtwcyWxhbQ==
+  /@azure/ms-rest-js/2.3.0:
+    dependencies:
+      '@azure/core-auth': 1.2.0
+      abort-controller: 3.0.0
+      form-data: 2.5.1
+      node-fetch: 2.6.1
+      tough-cookie: 3.0.1
+      tslib: 1.14.1
+      tunnel: 0.0.6
+      uuid: 3.4.0
+      xml2js: 0.4.23
+    dev: false
+    resolution:
+      integrity: sha512-8NOnHgovi61NpcUld53zRkY/IcQJBBO48VeMntNTUtaPo8yYYTnu1hWRvp6b6vpBnur7HGmuj692J9li5Kx6/Q==
   /@azure/ms-rest-nodeauth/0.9.3_debug@3.2.7:
     dependencies:
       '@azure/ms-rest-azure-env': 1.1.2
@@ -1308,6 +1323,14 @@ packages:
       node: ^8.10.0 || ^10.13.0 || >=11.10.1
     resolution:
       integrity: sha512-aGPS6kz//j7XLSlgpzU2SeTqHPsmRYxFztj2vPuMMFJXZudpRSehE3WCV+BaxwZFvfAqMoSd86TEuM0PQ59E/A==
+  /abort-controller/3.0.0:
+    dependencies:
+      event-target-shim: 5.0.1
+    dev: false
+    engines:
+      node: '>=6.5'
+    resolution:
+      integrity: sha512-h8lQ8tacZYnR3vNQTgibj+tODHI5/+l06Au2Pcriv/Gmet0eaj4TwWH41sO9wnHDiQsEj19q0drzdWdeAHtweg==
   /accepts/1.3.7:
     dependencies:
       mime-types: 2.1.29
@@ -1587,10 +1610,20 @@ packages:
       node: '>=0.10.0'
     resolution:
       integrity: sha1-yL4BCitc0A3qlsgRFgNGk9/dgtE=
+  /async-limiter/1.0.1:
+    dev: false
+    resolution:
+      integrity: sha512-csOlWGAcRFJaI6m+F2WKdnMKr4HhdhFVBk0H/QbJFMCr+uO2kwohwXQPxw/9OCxp05r5ghVBFSyioixx3gfkNQ==
   /async-lock/1.2.8:
     dev: false
     resolution:
       integrity: sha512-G+26B2jc0Gw0EG/WN2M6IczuGepBsfR1+DtqLnyFSH4p2C668qkOCtEkGNVEaaNAVlYwEMazy1+/jnLxltBkIQ==
+  /async/2.6.3:
+    dependencies:
+      lodash: 4.17.21
+    dev: false
+    resolution:
+      integrity: sha512-zflvls11DCy+dQWzTW2dzuilv8Z5X/pjfmZOWba6TNIVDm+2UDaJmXSOXlasHKfNBs8oo3M0aT50fDEWfKZjXg==
   /async/3.2.0:
     dev: false
     resolution:
@@ -1650,6 +1683,57 @@ packages:
       debug: '*'
     resolution:
       integrity: sha512-dKQiRHxGD9PPRIUNIWvZhPTPpl1rf/OxTYKsqKUDjBwYylTvV7SjSHJb9ratfyzM6wCdLCOYLzs73qpg5c4iGA==
+  /azure-iot-amqp-base/2.4.7:
+    dependencies:
+      async: 2.6.3
+      azure-iot-common: 1.12.7
+      debug: 4.3.1
+      lodash.merge: 4.6.2
+      machina: 4.0.2
+      rhea: 1.0.24
+      uuid: 3.4.0
+      ws: 6.2.1
+    dev: false
+    engines:
+      node: '>= 10.0.0'
+    resolution:
+      integrity: sha512-IDeoB33aHAcq71YAYsLQJNHp5f6CoFXU9nrwjNyL1bwZIbWGFtKJAr5qOEZFmdQTqeQmr2zZzeUrlTN6T7otkg==
+  /azure-iot-common/1.12.7:
+    dependencies:
+      debug: 4.3.1
+      getos: 3.2.1
+    dev: false
+    engines:
+      node: '>= 10.0.0'
+    resolution:
+      integrity: sha512-YDskP5GkhQw1VDtcQFfWAVcclNCi8/iWUS784lgwgNOQpr8RKHW1fC9o8lVt56TXssq0rrYcl9v2mosSD8WPnw==
+  /azure-iot-http-base/1.11.7:
+    dependencies:
+      azure-iot-common: 1.12.7
+      debug: 4.3.1
+      uuid: 3.4.0
+    dev: false
+    engines:
+      node: '>= 10.0.0'
+    resolution:
+      integrity: sha512-Xt2wLtiblGSag/zJe6vJVkgjlj+jo2C5exuaSGHuMtvkuD/MB74xyGDdgflXcOiTVzS1rXx02I02jgKHTW5BDA==
+  /azure-iothub/1.13.1:
+    dependencies:
+      '@azure/ms-rest-js': 2.3.0
+      async: 2.6.3
+      azure-iot-amqp-base: 2.4.7
+      azure-iot-common: 1.12.7
+      azure-iot-http-base: 1.11.7
+      debug: 4.3.1
+      lodash: 4.17.21
+      machina: 4.0.2
+      rhea: 1.0.24
+      tslib: 1.14.1
+    dev: false
+    engines:
+      node: '>= 10.0.0'
+    resolution:
+      integrity: sha512-aJX3Hmym7+7stCJbaYH34eJh4rQ0j7/eO6hoZeG9sgYs86+4KKqjjhJlS8AoAUe3CpepfHqUee8xk3VScvHhsQ==
   /azure-storage/2.10.3:
     dependencies:
       browserify-mime: 1.2.9
@@ -2929,6 +3013,12 @@ packages:
       node: '>= 0.6'
     resolution:
       integrity: sha1-Qa4u62XvpiJorr/qg6x9eSmbCIc=
+  /event-target-shim/5.0.1:
+    dev: false
+    engines:
+      node: '>=6'
+    resolution:
+      integrity: sha512-i/2XbnSz/uxRCU6+NdVJgKWDTM427+MqYbkQzD321DuCQJUqOuJKIA0IM2+W2xtYHdKOmZ4dR6fExsd4SXL+WQ==
   /eventemitter3/4.0.7:
     dev: false
     resolution:
@@ -3411,6 +3501,12 @@ packages:
     dev: false
     resolution:
       integrity: sha512-v7LT/s8kVjs+Tx0ykk1I+H/rbpzkHvuIq87LmeXptcf5sNWm9uQiwjNAt94SJPA1zOlCntmnOlJvVWKmzsxG8Q==
+  /getos/3.2.1:
+    dependencies:
+      async: 3.2.0
+    dev: false
+    resolution:
+      integrity: sha512-U56CfOK17OKgTVqozZjUKNdkfEv6jk5WISBJ8SHoagjE6L69zOwl3Z+O8myjY9MEW3i2HPWQBt/LTbCgcC973Q==
   /getpass/0.1.7:
     dependencies:
       assert-plus: 1.0.0
@@ -3843,6 +3939,12 @@ packages:
       node: '>= 0.10'
     resolution:
       integrity: sha512-agE4QfB2Lkp9uICn7BAqoscw4SZP9kTE2hxiFI3jBPmXJfdqiahTbUuKGsMoN2GtqL9AxhYioAcVvgsb1HvRbA==
+  /ip-regex/2.1.0:
+    dev: false
+    engines:
+      node: '>=4'
+    resolution:
+      integrity: sha1-+ni/XS5pE8kRzp+BnuUUa7bYROk=
   /ip/1.1.5:
     dev: false
     resolution:
@@ -4785,6 +4887,14 @@ packages:
     dev: false
     resolution:
       integrity: sha512-zTU3DaZaF3Rt9rhN3uBMGQD3dD2/vFQqnvZCDv4dl5iOzq2IZQqTxu90r4E5J+nP70J3ilqVCrbho2eWaeW8Ow==
+  /machina/4.0.2:
+    dependencies:
+      lodash: 4.17.21
+    dev: false
+    engines:
+      node: '>=0.4.0'
+    resolution:
+      integrity: sha512-OOlFrW1rd783S6tF36v5Ie/TM64gfvSl9kYLWL2cPA31J71HHWW3XrgSe1BZSFAPkh8532CMJMLv/s9L2aopiA==
   /magic-string/0.25.7:
     dependencies:
       sourcemap-codec: 1.4.8
@@ -6976,6 +7086,16 @@ packages:
       node: '>=0.8'
     resolution:
       integrity: sha512-nlLsUzgm1kfLXSXfRZMc1KLAugd4hqJHDTvc2hDIwS3mZAfMEuMbc03SujMF+GEcpaX/qboeycw6iO8JwVv2+g==
+  /tough-cookie/3.0.1:
+    dependencies:
+      ip-regex: 2.1.0
+      psl: 1.8.0
+      punycode: 2.1.1
+    dev: false
+    engines:
+      node: '>=6'
+    resolution:
+      integrity: sha512-yQyJ0u4pZsv9D4clxO69OEjLWYw+jbgspjTue4lTQZLfV0c5l1VmK2y1JK8E9ahdpltPOaAThPcp5nKPUgSnsg==
   /tough-cookie/4.0.0:
     dependencies:
       psl: 1.8.0
@@ -7430,6 +7550,12 @@ packages:
     dev: false
     resolution:
       integrity: sha512-GaETH5wwsX+GcnzhPgKcKjJ6M2Cq3/iZp1WyY/X1CSqrW+jVNM9Y7D8EC2sM4ZG/V8wZlSniJnCKWPmBYAucRQ==
+  /ws/6.2.1:
+    dependencies:
+      async-limiter: 1.0.1
+    dev: false
+    resolution:
+      integrity: sha512-GIyAXC2cB7LjvpgMt9EKS2ldqr0MTrORaleiOno6TweZ6r3TKtoFQWay/2PceJ3RuBasOHzXNn5Lrw1X0bEjqA==
   /ws/7.4.4:
     dev: false
     engines:
@@ -8019,7 +8145,7 @@ packages:
     dev: false
     name: '@rush-temp/communication-chat'
     resolution:
-      integrity: sha512-XM4moakFViGkpzzSOnMIkPfhELpfGp0yH6OnB8iG8KKw+8/a7IHr1E38fClhltnZ9++8saCVPWa6iCVShIYTkw==
+      integrity: sha512-ZHqKxQz8iv/x4KN7Gz8ox9lqpkjZyHMRFP+z8/hw3/R7+S2C2CSo6t4ezE1Mjbdb/H2YKPlAeyvz6PTLIMV/Ow==
       tarball: file:projects/communication-chat.tgz
     version: 0.0.0
   file:projects/communication-common.tgz:
@@ -8277,7 +8403,7 @@ packages:
     dev: false
     name: '@rush-temp/container-registry'
     resolution:
-      integrity: sha512-Nukb1vthTF6gX1eIoEE6gVaNy9gIz2m8QrMIKOK3tJhWWRs9ricP0foTomp3vQkt7p4MnkwfZPNzVZ1djgHLFA==
+      integrity: sha512-UoacMZ4ct+xvcl7FmW+jXiE/bRHh5RFNE48LxlB7Tqc3jBRlw0qKbu6k0GGUhRH3rGqvLQ45/a+/LbFcyva1bA==
       tarball: file:projects/container-registry.tgz
     version: 0.0.0
   file:projects/core-amqp.tgz:
@@ -8339,7 +8465,7 @@ packages:
     dev: false
     name: '@rush-temp/core-amqp'
     resolution:
-      integrity: sha512-eyOHHzpbpfkmQV1Y+yeJc/7AfA5CzcmKixGgq3Pl9b085yuNwmapn0vwt3xunyMfnUspXYJ4dBBUS1bG1g4LQg==
+      integrity: sha512-F0U7I1jwl6bFoqqzG2tGZgZ1SKEk2PKoKd+AYtV8cJQY7ixiIawVyqVRwOp7OfrqoiV11FsoctoFGM9xlinmbQ==
       tarball: file:projects/core-amqp.tgz
     version: 0.0.0
   file:projects/core-asynciterator-polyfill.tgz:
@@ -8944,7 +9070,7 @@ packages:
     dev: false
     name: '@rush-temp/dev-tool'
     resolution:
-      integrity: sha512-MFQZmnuf8q7ZvEXEXDpNFFn2ZUBhNn7MPgAUg0etnL6Hu2RxL5eM1p74Qama+EfHkYJrwDvS8ZQGsWmRifK2pQ==
+      integrity: sha512-rGtMfFPo8M7iE/unoqu6pixlEPyvRqJvFT7CE8yAnJR0MzVLOv+joUAkAuzH+iAP86N20cqLtR0Cax0fqjzFhw==
       tarball: file:projects/dev-tool.tgz
     version: 0.0.0
   file:projects/digital-twins-core.tgz:
@@ -9646,6 +9772,49 @@ packages:
     resolution:
       integrity: sha512-SkIJX0/3mm4KHuQhl6O7ObJfULCR2PjCtmGN1R4oJvs9plCVjK7szoqsldgM5CQSZwI94t5S/d+8ckDQxr/4WQ==
       tarball: file:projects/logger.tgz
+    version: 0.0.0
+  file:projects/media-analytics-edge.tgz:
+    dependencies:
+      '@microsoft/api-extractor': 7.7.11
+      '@opentelemetry/api': 0.10.2
+      '@types/chai': 4.2.15
+      '@types/chai-as-promised': 7.1.3
+      '@types/mocha': 7.0.2
+      '@types/node': 8.10.66
+      azure-iothub: 1.13.1
+      chai: 4.3.4
+      chai-as-promised: 7.1.1_chai@4.3.4
+      cross-env: 7.0.3
+      dotenv: 8.2.0
+      eslint: 7.22.0
+      events: 3.3.0
+      inherits: 2.0.4
+      karma: 6.3.1
+      karma-chrome-launcher: 3.1.0
+      karma-coverage: 2.0.3
+      karma-edge-launcher: 0.4.2_karma@6.3.1
+      karma-env-preprocessor: 0.1.1
+      karma-firefox-launcher: 1.3.0
+      karma-ie-launcher: 1.0.0_karma@6.3.1
+      karma-junit-reporter: 2.0.1_karma@6.3.1
+      karma-mocha: 2.0.1
+      karma-mocha-reporter: 2.2.5_karma@6.3.1
+      karma-sourcemap-loader: 0.3.8
+      mocha: 7.2.0
+      mocha-junit-reporter: 1.23.3_mocha@7.2.0
+      nyc: 14.1.1
+      prettier: 1.19.1
+      rimraf: 3.0.2
+      rollup: 1.32.1
+      tslib: 2.1.0
+      typedoc: 0.15.2
+      typescript: 4.2.3
+      util: 0.12.3
+    dev: false
+    name: '@rush-temp/media-analytics-edge'
+    resolution:
+      integrity: sha512-cmqcmU+OcoHaCwdumX9tIAqmEmUBNu+SKngIUmlvUwkZt7pqBSCyvivGDwYYL4ljd2Bt3n2T33GnqLTcE9elEQ==
+      tarball: file:projects/media-analytics-edge.tgz
     version: 0.0.0
   file:projects/mixedreality-authentication.tgz:
     dependencies:
@@ -10789,6 +10958,7 @@ specifiers:
   '@rush-temp/keyvault-keys': file:./projects/keyvault-keys.tgz
   '@rush-temp/keyvault-secrets': file:./projects/keyvault-secrets.tgz
   '@rush-temp/logger': file:./projects/logger.tgz
+  '@rush-temp/media-analytics-edge': file:./projects/media-analytics-edge.tgz
   '@rush-temp/mixedreality-authentication': file:./projects/mixedreality-authentication.tgz
   '@rush-temp/mock-hub': file:./projects/mock-hub.tgz
   '@rush-temp/monitor-opentelemetry-exporter': file:./projects/monitor-opentelemetry-exporter.tgz

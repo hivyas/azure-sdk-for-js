@@ -5,7 +5,7 @@ import { MethodRequest } from "./generated/models/mappers";
 /**
  * Method name and payload to send with a pipeline request. Method name determinds request type.
  */
-export interface Request<T> {
+export interface Request<T = Record<string, unknown>> {
   /**
    * Method name which determines type of request
    */
@@ -62,7 +62,7 @@ export function createRequest(request: "pipelineTopologyGet", payload: string): 
  * Create a request to list all pipeline topologies.
  * @param request The string which determines the type of request. In this case a PipelineTopologyList request.
  */
-export function createRequest(request: "pipelineTopologyList"): Request<{}>;
+export function createRequest(request: "pipelineTopologyList"): Request;
 /**
  * Create a request to delete a pipeline topology.
  * @param request The string which determines the type of request. In this case a PipelineTopologyDelete request.
@@ -91,7 +91,7 @@ export function createRequest(request: "livePipelineGet", payload: string): Requ
  * Create a request to list all live pipelines.
  * @param request The string which determines the type of request. In this case a LivePipelineList request.
  */
-export function createRequest(request: "livePipelineList"): Request<{}>;
+export function createRequest(request: "livePipelineList"): Request;
 /**
  * Create a request to delete a live pipeline
  * @param request The string which determines the type of request. In this case a LivePipelineDelete request.
@@ -116,7 +116,10 @@ export function createRequest(
   request: "livePipelineDeactivate",
   payload: string
 ): Request<NameObject>;
-export function createRequest<T extends object>(request: RequestType, payload?: any): Request<T> {
+export function createRequest<T extends PipelineTopology | NameObject | LivePipeline>(
+  request: RequestType,
+  payload?: string | PipelineTopology | LivePipeline
+): Request<T> | Request {
   return {
     methodName: request,
     payload: {
